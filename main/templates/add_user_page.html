@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/logout" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_logout">Log Out</button>
+        </form>
+        <form action="/dashboard_selector" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_return_button">Return to Dashboard</button>
+        </form>
+        <h1 class="dashboard_header">Add a new user</h1>
+
+        {% for message in messages %}    
+            <p style="color: red;" >{{ message }}</p>    
+        {% endfor %}
+        <form action="/users/new/add" method="POST">
+            {% csrf_token %}
+            <div>
+                <label>Email:</label>
+                <input type="text" name="email"><br><br>
+            </div>
+            <div>
+                <label>First Name:</label>
+                <input type="text" name="first_name"><br><br>
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" name="last_name"><br><br>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password"><br><br>
+            </div>
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" name="confirm_password"><br><br>
+            </div>
+            <div>
+                <label>User Level:</label>
+                <select name="user_level" id="">
+                    <option value="">Select User Level</option>
+                    <option value="9">Admin</option>
+                    <option value="1">Normal</option>
+                </select><br><br>
+            </div>
+            <button>Create</button><br><br>
+        </form>
+    </div>
+</body>
+</html>

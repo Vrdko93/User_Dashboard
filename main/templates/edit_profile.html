@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/logout" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_logout">Log Out</button>
+        </form>
+        <form action="/dashboard_selector" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_return_button">Return to Dashboard</button>
+        </form>
+       
+        <h1>Edit Profile</h1>
+        {% for message in messages %}    
+            <p style="color: red;" >{{ message }}</p>    
+        {% endfor %} 
+
+        <div class="edit_section">
+            <div class="edit_section_column">
+                <h4>Edit Information</h4>
+                <form action="/update_user/{{user.id}}" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <label>Email:</label>
+                        <input type="text" name="email" value="{{user.email}}"><br><br>
+                    </div>
+                    <div>
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" value="{{user.first_name}}"><br><br>
+                    </div>
+                    <div>
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" value="{{user.last_name}}"><br><br>
+                    </div>
+                    {% if user.level == 9 %}
+                        <div>
+                            <label>User Level:</label>
+                            <select name="user_level" id="">
+                                <option name="first_choice" value="">Select User Level</option>
+                                <option name="second_choice" value="9" selected>Admin</option>
+                                <option name="third_choice" value="1">Normal</option>
+                            </select><br><br>
+                        </div>
+                    {% endif %}
+                    <button>Save</button><br><br>
+                </form>
+            </div>
+            <div class="edit_section_column">
+                <form action="/update_password/{{user.id}}" method="POST">
+                    {% csrf_token %}
+                    <h4>Change Password</h4>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password"><br><br>
+                    </div>
+                    <div>
+                        <label>Confirm Password:</label>
+                        <input type="password" name="confirm_password"><br><br>
+                    </div>
+                    <button>Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

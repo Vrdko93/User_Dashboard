@@ -1,0 +1,100 @@
+*{
+    padding: 5px;
+    margin-top: 0px;
+}
+
+.wrapper{
+    height: 1000px;
+    width: 1000px;
+    background-color: cyan;
+    margin: 0px auto;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.show_user_wrapper{
+    width: 1000px;
+    background-color: rgb(53, 215, 255);
+    margin: 0px auto;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.edit_section{
+    width: 100%;
+    display: block;
+}
+
+.edit_section_column{
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    outline: 1px solid black;
+    margin-right: 20px;
+}
+
+span{
+    color: red;
+}
+
+.dashboard_header{
+    display: inline-block;
+}
+
+#home_page_signin, .dashboard_logout{
+    margin-left: 900px;
+    display: inline-block;
+}
+
+.dashboard_return_button{
+    margin-left: 900px;
+    display: inline-block;
+}
+
+table, thead, td {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+table{
+    color: black;
+}
+
+thead{
+    background-color: red;
+}
+
+tbody{
+    background-color: yellow;
+}
+
+thead{font-weight: bold;}
+
+#signin_section{
+    margin-left: 0px;
+}
+
+.wrapper .top-nav{
+    padding-top: 20px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color:rgb(19, 19, 75);
+}
+
+.wrapper .top-nav a{
+    text-decoration: none;
+}
+
+#home_main_content{
+    width: 100%;
+    height: 300px;
+}
+
+.comment, #post_comment{margin-left: 50px;}
+#message_heading, #comment_heading{font-weight: bold;}
+#heading{width:1480px; height:50px; outline:solid; margin-right: 10px; padding: 10px; background-color: rgb(91, 177, 218);}

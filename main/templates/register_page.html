@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_logout">Home</button>
+        </form>
+        <h1>Register</h1>  
+        {% for message in messages %}    
+            <p style="color: red;" >{{ message }}</p>    
+        {% endfor %}
+        <form action="/register/user" method="POST">
+            {% csrf_token %}
+            <div>
+                <label>First Name:</label>
+                <input type="text" name="first_name"><br><br>
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" name="last_name"><br><br>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" name="email"><br><br>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password"><br><br>
+            </div>
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" name="confirm_password"><br><br>
+            </div>
+            <button>Register</button><br><br>
+        </form>
+        <a href="/signin">Already have an account? Sign In</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_logout">Home</button>
+        </form>
+        <div id="signin_section">
+            <h1>Sign In</h1>
+            {% for message in messages %}    
+                <p style="color: red;" >{{ message }}</p>    
+            {% endfor %}
+            <form action="/signin/user" method="POST">
+                {% csrf_token %}
+                    <label>Email:</label>
+                    <input type="text" name="email"><br><br>
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input type="password" name="password"><br><br>
+                </div>
+                <button>Sign In</button><br><br>
+            </form>
+            <a href="/register">Don't have an account? Register</a>
+        </div>
+    </div>
+</body>
+</html>

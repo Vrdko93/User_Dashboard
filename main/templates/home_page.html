@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="home_main_content">
+            <form action="/signin" method="POST">
+                {% csrf_token %}
+                <button id="home_page_signin">Sign In</button>
+            </form>
+            <h1>Welcome to the User Dashboard App</h1>
+            <p>The User Dashboard application was built using the Python-based MVC web-framework called Django. Go ahead and check out all the features of the app.</p>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                <button>Sign Up</button><br><br>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Manage Users</td>
+                        <td>Leave Messages & Comments</td>
+                        <td>Edit User Information</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Using the User Dashboard application, you'll learn how to add, remove, and edit users</td>
+                        <td>Users will be able to leave messages and comments to another user using the application</td>
+                        <td>Admins will be able to edit another user's information (email address, first name, last name, etc)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p style="margin-left: 650px">Created by Vardges Gharibyan</p>   
+</body>
+</html>

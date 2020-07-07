@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/logout" method="POST">
+            {% csrf_token %}
+            <button class="dashboard_logout">Log Out</button>
+        </form>
+        <h1 class="dashboard_header">Hi {{user.first_name}}!</h1>
+        <h2>User Type: <span>Level 1/Normal</span></h2>
+        {% for message in messages %}    
+            <p style="color: red;" >{{ message }}</p>    
+        {% endfor %}    
+        <h2>All Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Date Created</td>
+                    <td>User Level</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for some_user in users %}
+                    <tr>
+                        <td>{{ some_user.id }}</td>
+                        <td><a href="/users/show/{{some_user.id}}">{{ some_user.first_name }} {{ some_user.last_name }}</a></td>
+                        <td>{{ some_user.email }}</td>
+                        <td>{{ some_user.created_at }}</td>
+                        {% if some_user.level == 9 %}
+                            <td>admin</td>
+                        {% else %} 
+                            <td>normal</td>
+                        {% endif %}
+                        <td><a href="/users/show/{{some_user.id}}">View</a> {% if some_user.id == user.id %} | <a href="/users/{{some_user.id}}/edit">Edit</a> {% endif %}</td>
+                    </tr>
+                {% endfor %}   
+            </tbody>
+        </table>
+    </div>   
+</body>
+</html>
